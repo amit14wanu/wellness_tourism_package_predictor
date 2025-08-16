@@ -29,6 +29,10 @@ own_car = st.selectbox("OwnCar", ["Yes", "No"])
 number_of_children_visiting = st.number_input("NumberOfChildrenVisiting", min_value=0, max_value=10, value=0)
 designation = st.selectbox("Designation", ["Executive", "Managerial", "Professional", "Other"])
 monthly_income = st.number_input("MonthlyIncome", min_value=0, max_value=100000, value=0)
+product_pitched = st.selectbox("ProductPitched", ["Basic", "Deluxe", "King", "Standard","Super Deluxe"])
+duration_of_pitch = st.number_input("DurationOfPitch", min_value=1, max_value=100, value=0)
+NumberOfFollowups = st.number_input("NumberOfFollowups", min_value=0, max_value=10, value=0)
+PitchSatisfactionScore = st.number_input("PitchSatisfactionScore", min_value=1, max_value=5, value=1)  
 
 # Assemble input into DataFrame
 input_data = pd.DataFrame([{

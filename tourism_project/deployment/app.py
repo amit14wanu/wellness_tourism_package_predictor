@@ -15,45 +15,45 @@ Please enter the sensor and configuration data below to get a prediction.
 """)
 
 # User input
-age = st.number_input("age (max)", min_value=18, max_value=100, value=100)
-type_of_contact = st.selectbox("TypeofContact", ["Company Invited", "Self Inquiry"])
-city_tier = st.selectbox("CityTier", ["Tier 1", "Tier 2", "Tier 3"])
+age = st.number_input("age (min)", min_value=18, max_value=100, value=18)
+type_of_contact = st.selectbox("Type of Contact", ["Company Invited", "Self Inquiry"])
+city_tier = st.selectbox("City Tier", ["Tier 1", "Tier 2", "Tier 3"])
 cccupation = st.selectbox("Occupation", ["Salaried", "Self Employed", "Business Owner"])
 gender = st.selectbox("Gender", ["Male", "Female"])
-number_of_person_visiting = st.number_input("NumberOfPersonVisiting", min_value=1, max_value=10, value=1)
-preferre_Property_star = st.number_input("PreferredPropertyStar", min_value=1, max_value=5, value=1)
-marital_status = st.selectbox("MaritalStatus", ["Single", "Married", "Divorced"])
-number_of_trips = st.number_input("NumberOfTrips", min_value=1, max_value=10, value=1)
+number_of_person_visiting = st.number_input("Number of Person Visiting", min_value=1, max_value=10, value=1)
+preferre_Property_star = st.number_input("Preferred Property Star", min_value=1, max_value=5, value=1)
+marital_status = st.selectbox("Marital Status", ["Single", "Married", "Divorced"])
+number_of_trips = st.number_input("Number of Trips", min_value=1, max_value=10, value=1)
 passport = st.selectbox("Passport", ["Yes", "No"])
-own_car = st.selectbox("OwnCar", ["Yes", "No"])
-number_of_children_visiting = st.number_input("NumberOfChildrenVisiting", min_value=0, max_value=10, value=0)
+own_car = st.selectbox("Own Car", ["Yes", "No"])
+number_of_children_visiting = st.number_input("Number of Children Visiting", min_value=0, max_value=10, value=0)
 designation = st.selectbox("Designation", ["Executive", "Managerial", "Professional", "Other"])
-monthly_income = st.number_input("MonthlyIncome", min_value=0, max_value=100000, value=0)
-product_pitched = st.selectbox("ProductPitched", ["Basic", "Deluxe", "King", "Standard","Super Deluxe"])
-duration_of_pitch = st.number_input("DurationOfPitch", min_value=1, max_value=100, value=1)
-NumberOfFollowups = st.number_input("NumberOfFollowups", min_value=0, max_value=10, value=0)
-PitchSatisfactionScore = st.number_input("PitchSatisfactionScore", min_value=1, max_value=5, value=1)  
+monthly_income = st.number_input("Monthly Income", min_value=0, max_value=100000, value=0)
+product_pitched = st.selectbox("Product Pitched", ["Basic", "Deluxe", "King", "Standard","Super Deluxe"])
+duration_of_pitch = st.number_input("Duration of Pitch", min_value=1, max_value=100, value=1)
+number_of_followups = st.number_input("Number of Followups", min_value=0, max_value=10, value=0)
+pitch_satisfaction_score = st.number_input("Pitch Satisfaction Score", min_value=1, max_value=5, value=1)  
 
 # Assemble input into DataFrame
 input_data = pd.DataFrame([{
   'Age': age,
   'Type of Contact': type_of_contact,
-  'City Tier': city_tier,
+  'CityTier': city_tier,
   'Occupation': cccupation,
   'Gender': gender,
-  'Number of Person Visiting': number_of_person_visiting,
+  'NumberOfPersonVisiting': number_of_person_visiting,
   'Preferred Property Star': preferre_Property_star,
-  'Marital Status': marital_status,
-  'Number of Trips': number_of_trips,
+  'MaritalStatus': marital_status,
+  'NumberOfTrips': number_of_trips,
   'Passport': passport,
-  'Own Car': own_car,
-  'Number of Children Visiting': number_of_children_visiting,
+  'OwnCar': own_car,
+  'NumberOfChildrenVisiting': number_of_children_visiting,
   'Designation': designation,
   'MonthlyIncome': monthly_income,
-  'Product Pitched': product_pitched,
-  'Duration of Pitch': duration_of_pitch,
-  'Number of Followups': NumberOfFollowups,
-  'Pitch Satisfaction Score': PitchSatisfactionScore                                 
+  'ProductPitched': product_pitched,
+  'DurationOfPitch': duration_of_pitch,
+  'NumberOfFollowups': number_of_followups,
+  'PitchSatisfactionScore': pitch_satisfaction_score                                 
 }])
 
 

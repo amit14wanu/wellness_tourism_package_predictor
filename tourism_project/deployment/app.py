@@ -10,22 +10,25 @@ model = joblib.load(model_path)
 # Streamlit UI for Tourism Product Prediction
 st.title("Tourism Product Prediction App")
 st.write("""
-This application predicts the likelihood of a machine failing based on its operational parameters.
-Please enter the sensor and configuration data below to get a prediction.
+This application predicts the likelihood of a customer accepting a wellness tourism package based on their demographic and behavioral characteristics.
+Please enter the customer information below to get a prediction.
 """)
 
 # User input
 age = st.number_input("age (min)", min_value=18, max_value=100, value=18)
 type_of_contact = st.selectbox("Type of Contact", ["Company Invited", "Self Inquiry"])
-city_tier = st.selectbox("City Tier", ["Tier 1", "Tier 2", "Tier 3"])
+city_tier_display = st.selectbox("City Tier", ["Tier 1", "Tier 2", "Tier 3"])
+city_tier = int(city_tier_display.split()[-1])  # Extract numeric value (1, 2, or 3)
 cccupation = st.selectbox("Occupation", ["Salaried", "Self Employed", "Business Owner"])
 gender = st.selectbox("Gender", ["Male", "Female"])
 number_of_person_visiting = st.number_input("Number of Person Visiting", min_value=1, max_value=10, value=1)
 preferre_Property_star = st.number_input("Preferred Property Star", min_value=1, max_value=5, value=1)
 marital_status = st.selectbox("Marital Status", ["Single", "Married", "Divorced"])
 number_of_trips = st.number_input("Number of Trips", min_value=1, max_value=10, value=1)
-passport = st.selectbox("Passport", ["Yes", "No"])
-own_car = st.selectbox("Own Car", ["Yes", "No"])
+passport_display = st.selectbox("Passport", ["Yes", "No"])
+passport = 1 if passport_display == "Yes" else 0  # Convert to numeric (1 for Yes, 0 for No)
+own_car_display = st.selectbox("Own Car", ["Yes", "No"])
+own_car = 1 if own_car_display == "Yes" else 0  # Convert to numeric (1 for Yes, 0 for No)
 number_of_children_visiting = st.number_input("Number of Children Visiting", min_value=0, max_value=10, value=0)
 designation = st.selectbox("Designation", ["Executive", "Managerial", "Professional", "Other"])
 monthly_income = st.number_input("Monthly Income", min_value=0, max_value=100000, value=0)
@@ -38,27 +41,27 @@ pitch_satisfaction_score = st.number_input("Pitch Satisfaction Score", min_value
 input_data = pd.DataFrame([{
   'Age': age,
   'TypeofContact': type_of_contact,
-  'CityTier': city_tier,
+  'CityTier': city_tier,  # Now numeric (1, 2, or 3)
   'Occupation': cccupation,
   'Gender': gender,
   'NumberOfPersonVisiting': number_of_person_visiting,
   'PreferredPropertyStar': preferre_Property_star,
   'MaritalStatus': marital_status,
   'NumberOfTrips': number_of_trips,
-  'Passport': passport,
-  'OwnCar': own_car,
+  'Passport': passport,  # Now numeric (1 for Yes, 0 for No)
+  'OwnCar': own_car,  # Now numeric (1 for Yes, 0 for No)
   'NumberOfChildrenVisiting': number_of_children_visiting,
   'Designation': designation,
   'MonthlyIncome': monthly_income,
   'ProductPitched': product_pitched,
   'DurationOfPitch': duration_of_pitch,
   'NumberOfFollowups': number_of_followups,
-  'PitchSatisfactionScore': pitch_satisfaction_score                                 
+  'PitchSatisfactionScore': pitch_satisfaction_score
 }])
 
 
-if st.button("Predict Wellness Tourim Package"):
+if st.button("Predict Wellness Tourism Package"):
     prediction = model.predict(input_data)[0]
-    result = "Wellness Tourim Package accepted" if prediction == 1 else "not Accepted"
+    result = "Wellness Tourism Package accepted" if prediction == 1 else "Wellness Tourism Package not accepted"
     st.subheader("Prediction Result:")
     st.success(f"The model predicts: **{result}**")

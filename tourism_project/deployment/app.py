@@ -37,12 +37,12 @@ pitch_satisfaction_score = st.number_input("Pitch Satisfaction Score", min_value
 # Assemble input into DataFrame
 input_data = pd.DataFrame([{
   'Age': age,
-  'Type of Contact': type_of_contact,
+  'TypeOfContact': type_of_contact,
   'CityTier': city_tier,
   'Occupation': cccupation,
   'Gender': gender,
   'NumberOfPersonVisiting': number_of_person_visiting,
-  'Preferred Property Star': preferre_Property_star,
+  'PreferredPropertyStar': preferre_Property_star,
   'MaritalStatus': marital_status,
   'NumberOfTrips': number_of_trips,
   'Passport': passport,

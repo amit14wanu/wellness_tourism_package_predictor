@@ -15,7 +15,7 @@ try:
     print(f"Space '{repo_id}' already exists. Using it.")
 except RepositoryNotFoundError:
     print(f"Space '{repo_id}' not found. Creating new space...")
-    create_repo(repo_id=repo_id, repo_type=repo_type, private=False)
+    create_repo(repo_id=repo_id, repo_type=repo_type, private=False, space_sdk="streamlit")
     print(f"Space '{repo_id}' created.")
 
 api.upload_folder(
@@ -23,5 +23,4 @@ api.upload_folder(
     repo_id=repo_id,                          # the target repo
     repo_type=repo_type,                        # dataset, model, or space
     path_in_repo="",                          # optional: subfolder path inside the repo
-    space_sdk="streamlit",                     # optional: specify the SDK for the space
 )

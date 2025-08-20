@@ -23,4 +23,5 @@ api.upload_folder(
     repo_id=repo_id,                          # the target repo
     repo_type=repo_type,                        # dataset, model, or space
     path_in_repo="",                          # optional: subfolder path inside the repo
+    space_sdk="streamlit"                     # optional: specify the SDK for the space
 )

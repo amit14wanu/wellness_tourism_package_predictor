@@ -18,7 +18,7 @@ print("Dataset loaded successfully.")
 
 # Drop the unique identifier
 df.drop(columns=['CustomerID'], inplace=True)
-df.drop(columns=['Unnamed'], inplace=True)
+df.drop(columns=['Unnamed:0'], inplace=True)
 
 # Data treatment - Gender
 data['Gender'] = data['Gender'].replace('Fe Male', 'Female')

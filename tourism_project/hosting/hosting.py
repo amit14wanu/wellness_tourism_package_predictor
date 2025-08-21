@@ -16,7 +16,7 @@ try:
     print(f"Space '{repo_id}' already exists. Using it.")
 except RepositoryNotFoundError:
     print(f"Space '{repo_id}' not found. Creating new space...")
-    create_repo(repo_id=repo_id, repo_type=repo_type, private=False, space_sdk="docker",template="streamlit")
+    create_repo(repo_id=repo_id, repo_type=repo_type, private=False, space_sdk="docker")
     print(f"Space '{repo_id}' created.")
 
 api.upload_folder(

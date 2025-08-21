@@ -18,10 +18,11 @@ print("Dataset loaded successfully.")
 
 # Drop the unique identifier
 df.drop(columns=['CustomerID'], inplace=True)
-df.drop(columns=['Unnamed:0'], inplace=True)
+# reset the index and drop the old index column:
+df = df.reset_index(drop=True)
 
 # Data treatment - Gender
-data['Gender'] = data['Gender'].replace('Fe Male', 'Female')
+df['Gender'] = df['Gender'].replace('Fe Male', 'Female')
 
 # Encoding the categorical 'Type' column
 label_encoder = LabelEncoder()
